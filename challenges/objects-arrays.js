@@ -58,8 +58,6 @@ tRex.roar("RAWERSRARARWERSARARARRRR!")
 
 // ==== Arrays ====
 
-// Given an array of college graduates.  Complete the following requests WITHOUT using any array methods like .forEach(), .map(), .reduce(), .filter()
-
 const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern State College","email":"ctorry0@macromedia.com"},
 {"id":2,"first_name":"Saundra","university":"The School of the Art Institute of Chicago","email":"swhal1@state.gov"},
 {"id":3,"first_name":"Lambert","university":"Marian College","email":"lparham2@techcrunch.com"},
@@ -75,7 +73,13 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
 const universities = [];
-console.log(universities)
+for(let i = 0; i < graduates.length; i++) {
+  let mappedObj = {};
+  mappedObj.university = graduates[i].university;
+  universities.push(mappedObj);
+  mappedObj = {};
+}
+console.log(universities.sort);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
 
@@ -84,13 +88,17 @@ Name email@example.com
 
 Log the result of your new array. */
 const contactInfo = [];
+let gradInfo = graduates.forEach(function(i){
+  contactInfo.push(i.first_name + " " + i.email);
+});
 console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = [];
+const uni = graduates.filter((similarName) =>{
+  return similarName.university === 'Uni';
+});
 console.log(uni);
-
 
 // ==== ADVANCED Array Methods ====
 
@@ -114,6 +122,9 @@ The zoo wants to display both the scientific name and the animal name in front o
 
 */
 const animalNames = [];
+let animalInfo = zooAnimals.forEach(function(i){
+  animalNames.push(i.animal_name + " " + i.scientific_name);
+});
 console.log(animalNames);
 
 /* Request 2: .map()    
@@ -122,25 +133,31 @@ The zoos need a list of all their animal's names (names only, not scientific) co
 
 */
 
-const lowerCase = [];
+let lowerCase = zooAnimals.map((animal) => {
+  return animal.animal_name.toLowerCase();
+});
 console.log(lowerCase); 
 
 /* Request 3: .filter() 
 
-The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
+The zoos are concerned about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-const largerPopulation = [];
-console.log(largerPopulation);
+const newPopulationFilter = zooAnimals.filter((currentPopulation) =>{
+	return currentPopulation.population <= 5;
+});
+
+console.log(newPopulationFilter);
 
 /* Request 4: .reduce() 
 
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+let populationTotal = zooAnimals.reduce((populationTotal, populationAmount) => {
+  return populationTotal + populationAmount.population;
+}, 0);
 console.log(populationTotal);
-
 
 /* 
 
