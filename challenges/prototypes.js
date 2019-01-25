@@ -12,17 +12,13 @@ function CuboidMaker(attributes) {
   this.height = attributes.height;
 } 
 CuboidMaker.prototype.volume = function() {
-  return (`${this.length} * ${this.width} * ${this.height}`);
-}
-
-CuboidMaker.multiplyNums = function (a,b,c) {
-  retrn a * b * c;
+  return (this.length * this.width * this.height);
 }
 
 CuboidMaker.prototype.surfaceArea = function() {
-  return (`${this.length} * ${this.width} * ${this.length} * ${this.height} * ${this.width} * ${this.height}`);
+  return (2 * (this.length * this.width + this.length * this.height + this.width * this.height));
 }
-
+//  length * width + length * height + width * height
 const cuboid = new CuboidMaker ({
   length: 4,
   width: 5,
@@ -31,7 +27,7 @@ const cuboid = new CuboidMaker ({
 
 
 console.log(cuboid.volume());
-console.log(cuboid.surfaceArea()); 
+console.log(cuboid.surfaceArea());
 
 /* == Step 2: Volume Method ==
   Create a method using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height

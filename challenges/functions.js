@@ -8,8 +8,8 @@
 */
 
 
-function consume(param1, param2, callback) {
-  callback(param1, param2);
+function consume(a, b, callback) {
+  console.log(callback(a, b));
 }
 
 function add(a,b) {
@@ -20,7 +20,7 @@ function multiply(a,b) {
   console.log(a*b);
 }
 function greeting(a,b) {
-  console.log(a,b);
+  console.log(`Hello ${a} ${b}, nice to meet you!`);
 }
 consume(2,2,add); // 4
 consume(10,16,multiply); // 160
