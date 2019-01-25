@@ -16,7 +16,7 @@ CuboidMaker.prototype.volume = function() {
 }
 
 CuboidMaker.multiplyNums = function (a,b,c) {
-  return a * b * c;
+  retrn a * b * c;
 }
 
 CuboidMaker.prototype.surfaceArea = function() {
